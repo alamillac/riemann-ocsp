@@ -4,6 +4,7 @@ import (
   "github.com/amir/raidman"
   "os"
   "fmt"
+  "strings"
   "strconv"
 )
 
@@ -31,7 +32,7 @@ func main() {
     case "1": state = "warning"
     case "2": state = "critical"
     case "3": state = "unknown"
-    default : state = os.Args[4]
+    default : state = strings.ToLower(os.Args[4])
   }
 
   var event = &raidman.Event{
