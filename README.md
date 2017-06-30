@@ -20,7 +20,7 @@ $ cat /usr/local/bin/submit_ocsp
 printf "%b" "$1\t$2\t$3\t$4\n" | send_nsca -H nagios.example.com -c /etc/nagios/send_nsca.cfg
 
 TTL=600
-riemann_ocsp "$1" "$2" "$3" "$4" "$TTL" "riemann.example.com:5555"
+riemann_ocsp "nagios" "$1" "$2" "$3" "$4" "$TTL" "riemann.example.com:5555"
 ```
 
 ```
