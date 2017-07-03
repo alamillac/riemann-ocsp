@@ -40,14 +40,14 @@ func main() {
     default : state = strings.ToLower(os.Args[4])
   }
 
-  var num_state string
+  var state_code string
 
   switch state {
-    case "ok": num_state = "0"
-    case "warning": num_state = "1"
-    case "critical": num_state = "2"
-    case "unknown": num_state = "3"
-    default : num_state = "3"
+    case "ok": state_code = "0"
+    case "warning": state_code = "1"
+    case "critical": state_code = "2"
+    case "unknown": state_code = "3"
+    default : state_code = "3"
   }
 
   var service = os.Args[1] +string('.')+ strings.Replace(strings.ToLower(os.Args[3]), " ", "_", -1)
@@ -60,7 +60,7 @@ func main() {
     Description:  os.Args[6],
     Ttl:          float32(f),
     Tags:         []string{os.Args[1]},
-    Attributes: map[string]string{"num_state": num_state},
+    Attributes: map[string]string{"state_code": state_code},
   }
 
   err = c.Send(event)
